@@ -42,6 +42,7 @@ close.addEventListener('click', closeModal)
 function closeModal() {
 	modalbg.style.display = 'none'
 	modalBody.innerHTML = formContent
+	location.reload();
 }
 
 // On crée une regex pour la vérification de l'email
@@ -82,7 +83,7 @@ const validate = (event) => {
 	if (inputs['birthdate'].value) {
 		const [year, month, day] = inputs['birthdate'].value.split('-')
 		const now = new Date()
-		if (+year > now.getFullYear() || (+year === now.getFullYear() && +month > now.getMonth() + 1) || (+year === now.getFullYear() && +month === now.getMonth() + 1 && +day > now.getDate())) {
+		if (+year > now.getFullYear() || (+year === now.getFullYear() && +month > now.getMonth() + 1) || (+year === now.getFullYear() && +month === now.getMonth() + 1 && +day > now.getDate()) || (+year === now.getFullYear() && +month === now.getMonth() + 1 && +day === now.getDate())) {
 			errors['birthdate'].textContent = 'Veuillez entrer une date de naissance valide'
 			error = true
 		} else {
